@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="create_script_tab">
      <attribute name="title">
@@ -200,12 +200,7 @@
           </layout>
          </item>
          <item>
-          <widget class="QTableWidget" name="tableWidget_2">
-           <column>
-            <property name="text">
-             <string>№</string>
-            </property>
-           </column>
+          <widget class="QTableWidget" name="hostListTableWidget">
            <column>
             <property name="text">
              <string>Назва хоста</string>
@@ -281,12 +276,7 @@
           </layout>
          </item>
          <item>
-          <widget class="QTableWidget" name="tableWidget">
-           <column>
-            <property name="text">
-             <string>№</string>
-            </property>
-           </column>
+          <widget class="QTableWidget" name="scriptListTableWidget">
            <column>
             <property name="text">
              <string>Назва сценарія</string>
@@ -335,11 +325,11 @@
   <tabstop>textEdit</tabstop>
   <tabstop>updateHostListButton</tabstop>
   <tabstop>startInstalationButton</tabstop>
-  <tabstop>tableWidget_2</tabstop>
+  <tabstop>hostListTableWidget</tabstop>
   <tabstop>addNewScriptButton</tabstop>
   <tabstop>removeScriptButton</tabstop>
   <tabstop>editScriptButton</tabstop>
-  <tabstop>tableWidget</tabstop>
+  <tabstop>scriptListTableWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>
