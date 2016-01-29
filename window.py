@@ -16,11 +16,12 @@ class Window(Ui_MainWindow):
         self.refresh_program_list()
 
     def update_host_list(self):
-        host_list = self.network_manager.get_hosts_list()
-        self.hostListTableWidget.setRowCount(len(host_list))
-        for i, elem in enumerate(host_list):
-            table_item = QTableWidgetItem(elem)
-            self.hostListTableWidget.setItem(i, 1, table_item)
+        host_description_list = self.network_manager.get_hosts_list()
+        self.hostListTableWidget.setRowCount(len(host_description_list))
+        for i, host_desc in enumerate(host_description_list):
+            for j, desc in enumerate(host_desc):
+                table_item = QTableWidgetItem(desc)
+                self.hostListTableWidget.setItem(i, j, table_item)
 
     def refresh_program_list(self):
         self.tree_widgets_list.clear()
