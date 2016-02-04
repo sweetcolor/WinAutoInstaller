@@ -8,7 +8,7 @@ import os
 class Window(Ui_MainWindow):
     def __init__(self, widget=None):
         super(Window, self).__init__()
-        # self.widget = widget
+        self.widget = widget
         self._last_dir = self._default_last_opened_dir()
         self.tree_widgets_list = []
         self.installer_manager = InstallerManager()
@@ -44,7 +44,6 @@ class Window(Ui_MainWindow):
     def _default_last_opened_dir():
         # return os.environ['USERPROFILE']
         return os.getcwd()
-
 
 
 __author__ = 'Администратор'
