@@ -13,6 +13,7 @@ class MainWindow(Window):
         self.openInstallerButton.clicked.connect(self.open_installer)
         self.refreshListButton.clicked.connect(self.refresh_program_list)
         self.updateHostListButton.clicked.connect(self.update_host_list)
+        self.fullUpdateHostListButton.clicked.connect(self.full_update_host_list)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

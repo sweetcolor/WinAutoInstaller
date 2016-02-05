@@ -26,75 +26,71 @@
     <property name="currentIndex">
      <number>1</number>
     </property>
-    <widget class="QWidget" name="create_script_tab">
+    <widget class="QWidget" name="createScriptTab">
      <attribute name="title">
       <string>Створення сценаріїв</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1031</width>
+        <width>1041</width>
         <height>571</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_2">
+      <layout class="QGridLayout" name="createScriptGridLayout">
        <item row="0" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_5">
+        <layout class="QVBoxLayout" name="componnentVerticalLayout">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
+          <widget class="QLabel" name="installerComponnentLabel">
+           <property name="text">
+            <string>Компоненти інсталятора</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="componnentButtonsHorizontalLayout">
            <item>
-            <widget class="QLabel" name="installerComponnentLabel">
+            <widget class="QPushButton" name="openInstallerButton">
              <property name="text">
-              <string>Компоненти інсталятора</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
+              <string>Open</string>
              </property>
             </widget>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <widget class="QPushButton" name="openInstallerButton">
-               <property name="text">
-                <string>Open</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="refreshListButton">
-               <property name="text">
-                <string>Оновити список</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
+            <widget class="QPushButton" name="refreshListButton">
+             <property name="text">
+              <string>Оновити список</string>
+             </property>
+            </widget>
            </item>
            <item>
-            <widget class="QTreeWidget" name="treeWidget">
-             <column>
-              <property name="text">
-               <string notr="true">Запущені програми</string>
-              </property>
-             </column>
-            </widget>
+            <spacer name="componnentButtonsHorizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QTreeWidget" name="installerComponnentTreeWidget">
+           <column>
+            <property name="text">
+             <string notr="true">Запущені програми</string>
+            </property>
+           </column>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="proprtyComponnentLabel">
@@ -107,7 +103,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableWidget" name="tableWidget_3">
+          <widget class="QTableWidget" name="proprtyComponnentTableWidget">
            <column>
             <property name="text">
              <string>Назва</string>
@@ -123,7 +119,7 @@
         </layout>
        </item>
        <item row="0" column="1">
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QVBoxLayout" name="ScriptsVerticalLayout">
          <item>
           <widget class="QLabel" name="scriptLabel">
            <property name="text">
@@ -142,22 +138,22 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="host_manager_tab">
+    <widget class="QWidget" name="hostManagerTab">
      <attribute name="title">
       <string>Менеджер локальних машин</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>1021</width>
-        <height>561</height>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>571</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="hostManagerTabGridLayout">
        <item row="0" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QVBoxLayout" name="hostListVerticalLayout">
          <item>
           <widget class="QLabel" name="localMachineListLabel">
            <property name="text">
@@ -169,7 +165,14 @@
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <layout class="QHBoxLayout" name="hostListButtonsHorizontalLayout">
+           <item>
+            <widget class="QPushButton" name="fullUpdateHostListButton">
+             <property name="text">
+              <string>Повне оновлення</string>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QPushButton" name="updateHostListButton">
              <property name="text">
@@ -185,7 +188,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer_2">
+            <spacer name="hostListButtonsHorizontalSpacer">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -226,7 +229,7 @@
         </layout>
        </item>
        <item row="0" column="1">
-        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <layout class="QVBoxLayout" name="scriptsListVerticalLayout">
          <item>
           <widget class="QLabel" name="ScriptListLabel">
            <property name="text">
@@ -238,7 +241,7 @@
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <layout class="QHBoxLayout" name="scriptsListButtonsHorizontalLayout">
            <item>
             <widget class="QPushButton" name="addNewScriptButton">
              <property name="text">
@@ -261,7 +264,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer_3">
+            <spacer name="scriptsListButtonsHorizontalSpacer">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -318,10 +321,7 @@
  </widget>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>openInstallerButton</tabstop>
-  <tabstop>refreshListButton</tabstop>
-  <tabstop>treeWidget</tabstop>
-  <tabstop>tableWidget_3</tabstop>
+  <tabstop>proprtyComponnentTableWidget</tabstop>
   <tabstop>textEdit</tabstop>
   <tabstop>updateHostListButton</tabstop>
   <tabstop>startInstalationButton</tabstop>
