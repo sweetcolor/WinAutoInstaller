@@ -6,7 +6,7 @@ class NetworkManager(nmap.PortScanner):
         super().__init__()
 
     def get_hosts_list(self, known_list_ip=None):
-        list_ip = known_list_ip if known_list_ip else '192.168.2.1-255'
+        list_ip = known_list_ip if known_list_ip else '192.168.0.1-255'
         enable_hosts = self.scan(hosts=list_ip, ports='22')
         ip = enable_hosts['scan'].keys()
         hostnames = [enable_hosts['scan'][i]['hostnames'] for i in ip]

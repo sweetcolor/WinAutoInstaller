@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="createScriptTab">
      <attribute name="title">
@@ -41,9 +41,9 @@
       </property>
       <layout class="QGridLayout" name="createScriptGridLayout">
        <item row="0" column="0">
-        <layout class="QVBoxLayout" name="componnentVerticalLayout">
+        <layout class="QVBoxLayout" name="componentVerticalLayout">
          <item>
-          <widget class="QLabel" name="installerComponnentLabel">
+          <widget class="QLabel" name="installerComponentLabel">
            <property name="text">
             <string>Компоненти інсталятора</string>
            </property>
@@ -53,7 +53,7 @@
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="componnentButtonsHorizontalLayout">
+          <layout class="QHBoxLayout" name="componentButtonsHorizontalLayout">
            <item>
             <widget class="QPushButton" name="openInstallerButton">
              <property name="text">
@@ -69,7 +69,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="componnentButtonsHorizontalSpacer">
+            <spacer name="componentButtonsHorizontalSpacer">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -84,16 +84,16 @@
           </layout>
          </item>
          <item>
-          <widget class="QTreeWidget" name="installerComponnentTreeWidget">
+          <widget class="QTreeWidget" name="installerComponentTreeWidget">
            <column>
             <property name="text">
-             <string notr="true">Запущені програми</string>
+             <string notr="true">Компоненти інсталятора</string>
             </property>
            </column>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="proprtyComponnentLabel">
+          <widget class="QLabel" name="proprtyComponentLabel">
            <property name="text">
             <string>Властивості компонента</string>
            </property>
@@ -103,7 +103,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableWidget" name="proprtyComponnentTableWidget">
+          <widget class="QTableWidget" name="proprtyComponentTableWidget">
            <column>
             <property name="text">
              <string>Назва</string>
@@ -321,7 +321,7 @@
  </widget>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>proprtyComponnentTableWidget</tabstop>
+  <tabstop>proprtyComponentTableWidget</tabstop>
   <tabstop>textEdit</tabstop>
   <tabstop>updateHostListButton</tabstop>
   <tabstop>startInstalationButton</tabstop>

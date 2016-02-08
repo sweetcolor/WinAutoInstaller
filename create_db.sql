@@ -1,6 +1,3 @@
-DROP TABLE hosts;
-DROP TABLE scripts;
-
 CREATE TABLE IF NOT EXISTS hosts (
     id serial PRIMARY KEY,
     hostname varchar(50) NOT NULL,
