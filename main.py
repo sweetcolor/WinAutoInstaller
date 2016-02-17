@@ -5,6 +5,7 @@ from PyQt5 import QtWidgets
 from app.managers.window_manager import Window
 
 
+# TODO create single class file
 class MainWindow(Window):
     def __init__(self, form):
         self.setupUi(form)
@@ -16,6 +17,7 @@ class MainWindow(Window):
         self.refreshListButton.clicked.connect(self.refresh_program_list)
         self.updateHostListButton.clicked.connect(self.update_host_list)
         self.fullUpdateHostListButton.clicked.connect(self.full_update_host_list)
+        self.installerComponentTreeWidget.doubleClicked.connect(self.clicked_on_program_component)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

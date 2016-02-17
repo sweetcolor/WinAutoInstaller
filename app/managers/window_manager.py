@@ -18,6 +18,7 @@ class Window(Ui_MainWindow):
         self.installer_manager = InstallerManager()
         self.network_manager = NetworkManager()
         self.database_manager = DatabaseManager('winautoinstaller')
+        self.components = dict()
 
     def full_update_host_list(self):
         host_description_list = self.network_manager.get_hosts_list()
@@ -32,14 +33,19 @@ class Window(Ui_MainWindow):
     def refresh_program_list(self):
         self.installer_wind_components_list.clear()
         self.installerComponentTreeWidget.clear()
-        windows = self.installer_manager.get_program_components()
-        for wind_text in windows.keys():
+        components_text, components = self.installer_manager.get_program_components()
+        self.components = components
+        for wind_text in components_text.keys():
             wind_item = QTreeWidgetItem(self.installerComponentTreeWidget)
             self.installer_winds_list.append(wind_item)
             wind_item.setText(0, wind_text)
-            for child_text in windows[wind_text]:
+            for child_text in components_text[wind_text]:
                 self.installer_wind_components_list.append(QTreeWidgetItem(wind_item))
                 self.installer_wind_components_list[-1].setText(0, child_text)
+
+    def clicked_on_program_component(self, index):
+        text = self.installerComponentTreeWidget.itemFromIndex(index).text(0)
+        self.components[text].highlight_control()
 
     def open_installer(self):
         installer_path = QFileDialog().getOpenFileName(self.widget, 'Open installer', self._last_dir, '*.exe *.msi')[0]
