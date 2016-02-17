@@ -2,7 +2,6 @@ import pywinauto
 from app.winapi_manager.winapi_process import WinApiProcess
 
 
-# TODO rename application_manager -> installer_manager
 # TODO rename all manager -> interface
 # TODO create controllers
 class InstallerManager:

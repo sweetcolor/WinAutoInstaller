@@ -1,7 +1,7 @@
 import os
 
 from PyQt5.QtWidgets import QTreeWidgetItem, QFileDialog, QTableWidgetItem
-from app.managers.application_manager import InstallerManager
+from app.managers.installer_manager import InstallerManager
 from app.managers.network_manager import NetworkManager
 
 from app.managers.database_manager import DatabaseManager
