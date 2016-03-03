@@ -1,5 +1,6 @@
 import time
 import _thread as thread
+from app.winapi_manager.const import ACTIONS
 
 
 class WinApiObject:
@@ -20,6 +21,26 @@ class WinApiObject:
         # TODO if self._check_visibility():
         thread.start_new_thread(self._highlight_control, (3,))
         return 0
+
+    def exec_action(self, action):
+        """
+        Execute action on the control
+        :param action:
+        """
+        getattr(self.handle_wrapper, action)()
+        return 0
+
+    def get_actions(self):
+        """
+        return allowed actions for this object. [(id,action_name),...]
+        """
+        allowed_actions = []
+        obj_actions = dir(self.handle_wrapper)
+        for action in ACTIONS:
+            if action in obj_actions:
+                allowed_actions.append(action)
+        allowed_actions.sort()
+        return allowed_actions
 
     def _highlight_control(self, repeat=1):
         while repeat > 0:

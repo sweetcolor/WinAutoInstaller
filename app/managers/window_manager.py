@@ -5,6 +5,7 @@ from app.managers.installer_manager import InstallerManager
 from app.managers.network_manager import NetworkManager
 
 from app.managers.database_manager import DatabaseManager
+from app.managers.menu_manager import MenuManager
 from app.view.form import Ui_MainWindow
 
 
@@ -46,6 +47,15 @@ class Window(Ui_MainWindow):
     def clicked_on_program_component(self, index):
         text = self.installerComponentTreeWidget.itemFromIndex(index).text(0)
         self.components[text].highlight_control()
+
+    def context_menu_of_program_component(self, event):
+        clicked_item_index = self.installerComponentTreeWidget.indexAt(event)
+        text_clicked_item = clicked_item_index.data()
+        item = self.components[text_clicked_item]
+        context_menu = MenuManager(item, self.widget)
+        for action in item.get_actions():
+            context_menu.addAction(action)
+        context_menu.exec(self.widget.mapToGlobal(event))
 
     def open_installer(self):
         installer_path = QFileDialog().getOpenFileName(self.widget, 'Open installer', self._last_dir, '*.exe *.msi')[0]
