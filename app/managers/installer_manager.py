@@ -16,14 +16,14 @@ class InstallerManager:
 
     def get_program_components(self):
         components = self.process.all_components() if self.process else []
+        components_text = self._get_program_components_helper(components)
+        return components_text, components
+
+    def _get_program_components_helper(self, components):
         components_text = dict()
-        components_for_tree_widget = dict()
-        for wind in components.keys():
-            components_text[wind.get_text()] = [child.get_text() for child in components[wind]]
-            components_for_tree_widget[wind.get_text()] = wind
-            for child in components[wind]:
-                components_for_tree_widget[child.get_text()] = child
-        return components_text, components_for_tree_widget
+        for component in components.keys():
+            components_text[component] = self._get_program_components_helper(components[component]['child'])
+        return components_text
 
     def get_programs_list(self):
         return self.process.all_components() if self.process else []

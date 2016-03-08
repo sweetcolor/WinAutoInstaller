@@ -11,10 +11,13 @@ class WinApiProcess:
 
     def all_components(self):
         handles = findwindows.find_windows(process=self.process_id)
+        return self._components_helper(handles)
+
+    def _components_helper(self, child_handles):
         windows = dict()
-        for w_handle in handles:
-            window_ = WinApiWindow(WindowSpecification(dict(handle=w_handle)))
-            windows[window_] = list()
-            for sub_hwnd in window_.Children():
-                windows[window_].append(WinApiWindow(sub_hwnd))
+        for c_handle in child_handles:
+            window_ = WinApiWindow(WindowSpecification(dict(handle=c_handle)))
+            windows[window_.get_text()] = dict()
+            windows[window_.get_text()]['component'] = window_
+            windows[window_.get_text()]['child'] = self._components_helper(window_.Children())
         return windows

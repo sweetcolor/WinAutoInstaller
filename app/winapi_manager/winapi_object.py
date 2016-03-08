@@ -27,7 +27,7 @@ class WinApiObject:
         Execute action on the control
         :param action:
         """
-        getattr(self.handle_wrapper, action)()
+        getattr(self.handle_wrapper, action.text())()
         return 0
 
     def get_actions(self):
@@ -35,7 +35,7 @@ class WinApiObject:
         return allowed actions for this object. [(id,action_name),...]
         """
         allowed_actions = []
-        obj_actions = dir(self.handle_wrapper)
+        obj_actions = dir(self.handle_wrapper.WrapperObject())
         for action in ACTIONS:
             if action in obj_actions:
                 allowed_actions.append(action)

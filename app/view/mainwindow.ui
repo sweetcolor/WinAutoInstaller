@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="installerTabWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="createScriptTab">
      <attribute name="title">
@@ -297,6 +297,97 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="installerManagerTab">
+     <attribute name="title">
+      <string>Менеджер інсталяторів</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="installerVerticalLayout">
+       <item>
+        <widget class="QLabel" name="installerLabel">
+         <property name="text">
+          <string>Інсталятори</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="installerButtonHorizontalLayout">
+         <item>
+          <widget class="QPushButton" name="addInstallerPushButton">
+           <property name="text">
+            <string>Додати</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteInstallerPushButton">
+           <property name="text">
+            <string>Видалити</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editInstallerPushButton">
+           <property name="text">
+            <string>Редагувати</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveChangesPushButton">
+           <property name="text">
+            <string>Зберегти зміни</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="installerButtonHorizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="installerTableWidget">
+         <column>
+          <property name="text">
+           <string>Назва</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Шлях</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Аргументи</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -320,9 +411,12 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
+  <tabstop>openInstallerButton</tabstop>
+  <tabstop>refreshListButton</tabstop>
+  <tabstop>installerComponentTreeWidget</tabstop>
   <tabstop>proprtyComponentTableWidget</tabstop>
   <tabstop>textEdit</tabstop>
+  <tabstop>fullUpdateHostListButton</tabstop>
   <tabstop>updateHostListButton</tabstop>
   <tabstop>startInstalationButton</tabstop>
   <tabstop>hostListTableWidget</tabstop>
@@ -330,6 +424,12 @@
   <tabstop>removeScriptButton</tabstop>
   <tabstop>editScriptButton</tabstop>
   <tabstop>scriptListTableWidget</tabstop>
+  <tabstop>addInstallerPushButton</tabstop>
+  <tabstop>deleteInstallerPushButton</tabstop>
+  <tabstop>editInstallerPushButton</tabstop>
+  <tabstop>saveChangesPushButton</tabstop>
+  <tabstop>installerTableWidget</tabstop>
+  <tabstop>installerTabWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>
