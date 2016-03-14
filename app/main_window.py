@@ -17,3 +17,4 @@ class MainWindow(Window):
         self.installerComponentTreeWidget.setContextMenuPolicy(Qt.CustomContextMenu)
         self.installerComponentTreeWidget.customContextMenuRequested.connect(self.context_menu_of_program_component)
         self.addInstallerPushButton.clicked.connect(self.add_installer)
+        self.deleteInstallerPushButton.clicked.connect(self.delete_installer)

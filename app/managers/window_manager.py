@@ -68,12 +68,11 @@ class Window(Ui_MainWindow):
             self.refresh_program_list()
 
     def add_installer(self):
-        installers_path = self.get_installer_path()
+        installers_path = self.get_installer_path()[:-1]
         if installers_path:
             row_count = self.installerTableWidget.rowCount()
-            installers_path = installers_path[:-1]
-            self.installerTableWidget.setRowCount(row_count + len(installers_path))
             for idx, installer_path in enumerate(installers_path):
+                self.installerTableWidget.setRowCount(row_count + 1)
                 name = installer_path.split('/')[-1][:-4]
                 table_item = QTableWidgetItem(name)
                 self.installerTableWidget.setItem(row_count + idx, 0, table_item)
@@ -82,11 +81,17 @@ class Window(Ui_MainWindow):
                 table_item = QTableWidgetItem('')
                 self.installerTableWidget.setItem(row_count + idx, 2, table_item)
 
+    def delete_installer(self):
+        for index in self.installerTableWidget.selectedIndexes():
+            self.installerTableWidget.removeRow(index.row())
+
     def get_installer_path(self):
         dialog = FileDialog()
         dialog.setFileMode(FileDialog.ExistingFiles)
-        return dialog.getOpenFileName(self.widget, 'Open installer', self._last_dir,
-                                      '*.exe;;*.msi;;All files (*.*)')
+        open_files = dialog.getOpenFileName(self.widget, 'Open installer', self._last_dir,
+                                            '*.exe;;*.msi;;All files (*.*)')
+        self._last_dir = os.path.dirname(open_files[0])
+        return list(filter(bool, open_files))
 
     def _update_host_list_table_widget(self, host_description_list):
         self.hostListTableWidget.setRowCount(len(host_description_list))
@@ -95,14 +100,10 @@ class Window(Ui_MainWindow):
                 table_item = QTableWidgetItem(desc)
                 self.hostListTableWidget.setItem(i, j, table_item)
 
-    def _last_opened_dir(self):
-        if self._last_dir is None:
-            self._last_dir = self._default_last_opened_dir()
-
     @staticmethod
     def _default_last_opened_dir():
         # return os.environ['USERPROFILE']
-        return os.getcwd()
+        return os.path.join(os.getcwd(), 'test', 'test_installer')
 
 
 __author__ = 'Администратор'
