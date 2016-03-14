@@ -1,0 +1,2 @@
+class SilentInstallerManager:
+    pass

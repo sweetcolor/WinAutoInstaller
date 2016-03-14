@@ -1,13 +1,15 @@
 import os
 
-from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem
-from app.managers.installer_manager import InstallerManager
-from app.managers.network_manager import NetworkManager
+from PyQt5.QtWidgets import QTableWidgetItem
+from widgets.file_dialog import FileDialog
 
 from app.managers.database_manager import DatabaseManager
+from app.managers.installer_script_manager import InstallerScriptManager
 from app.managers.menu_manager import MenuManager
-from app.view.form import Ui_MainWindow
-from app.view.installerTreeWidgetItem import InstallerTreeWidgetItem
+from app.managers.network_manager import NetworkManager
+from app.view.mainwindow import Ui_MainWindow
+# from app.view.form import Ui_MainWindow
+from widgets.installerTreeWidgetItem import InstallerTreeWidgetItem
 
 
 class Window(Ui_MainWindow):
@@ -17,7 +19,7 @@ class Window(Ui_MainWindow):
         self._last_dir = self._default_last_opened_dir()
         self.installer_winds_list = list()
         self.installer_wind_components_list = list()
-        self.installer_manager = InstallerManager()
+        self.installer_manager = InstallerScriptManager()
         self.network_manager = NetworkManager()
         self.database_manager = DatabaseManager('winautoinstaller')
         self.components = dict()
@@ -37,14 +39,6 @@ class Window(Ui_MainWindow):
         self.installerComponentTreeWidget.clear()
         components_text, components = self.installer_manager.get_program_components()
         self._refresh_program_list_helper(self.installerComponentTreeWidget, components)
-        # self.components = components
-        # for wind_text in components_text.keys():
-        #     wind_item = InstallerTreeWidgetItem(self.installerComponentTreeWidget)
-        #     self.installer_winds_list.append(wind_item)
-        #     wind_item.setText(0, wind_text)
-        #     for child_text in components_text[wind_text]:
-        #         self.installer_wind_components_list.append(InstallerTreeWidgetItem(wind_item))
-        #         self.installer_wind_components_list[-1].setText(0, child_text)
 
     def _refresh_program_list_helper(self, parent, components):
         for text in components.keys():
@@ -67,11 +61,32 @@ class Window(Ui_MainWindow):
         context_menu.exec(self.widget.mapToGlobal(event))
         self.refresh_program_list()
 
-    def open_installer(self):
-        installer_path = QFileDialog().getOpenFileName(self.widget, 'Open installer', self._last_dir, '*.exe *.msi')[0]
+    def run_installer(self):
+        installer_path = self.get_installer_path()[0]
         if installer_path:
             self.installer_manager.start_installer(installer_path)
             self.refresh_program_list()
+
+    def add_installer(self):
+        installers_path = self.get_installer_path()
+        if installers_path:
+            row_count = self.installerTableWidget.rowCount()
+            installers_path = installers_path[:-1]
+            self.installerTableWidget.setRowCount(row_count + len(installers_path))
+            for idx, installer_path in enumerate(installers_path):
+                name = installer_path.split('/')[-1][:-4]
+                table_item = QTableWidgetItem(name)
+                self.installerTableWidget.setItem(row_count + idx, 0, table_item)
+                table_item = QTableWidgetItem(installer_path)
+                self.installerTableWidget.setItem(row_count + idx, 1, table_item)
+                table_item = QTableWidgetItem('')
+                self.installerTableWidget.setItem(row_count + idx, 2, table_item)
+
+    def get_installer_path(self):
+        dialog = FileDialog()
+        dialog.setFileMode(FileDialog.ExistingFiles)
+        return dialog.getOpenFileName(self.widget, 'Open installer', self._last_dir,
+                                      '*.exe;;*.msi;;All files (*.*)')
 
     def _update_host_list_table_widget(self, host_description_list):
         self.hostListTableWidget.setRowCount(len(host_description_list))

@@ -4,7 +4,7 @@ from app.winapi_manager.winapi_process import WinApiProcess
 
 # TODO rename all manager -> interface
 # TODO create controllers
-class InstallerManager:
+class InstallerScriptManager:
     def __init__(self):
         self.app = pywinauto.Application()
         self.installer = None
