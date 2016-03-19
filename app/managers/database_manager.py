@@ -33,11 +33,10 @@ class DatabaseManager:
             if migration_file not in migrated_file:
                 self.execute_sql_file(migration_file)
                 self.migration_cursor.execute(
-                    'INSERT INTO migration_winautoinstaller (name) VALUES (%s)', (migration_file, )
+                    'INSERT INTO migration_winautoinstaller (name) VALUES (%s)', (migration_file,)
                 )
         self.migration_connection.commit()
         os.chdir(curr_dir)
-        print(migrated_file)
 
     def execute_sql_file(self, file_sql):
         file_sql = filter(lambda x: x not in string.whitespace, open(file_sql).read().split(';'))
@@ -52,6 +51,20 @@ class DatabaseManager:
     def update_hosts_list(self, hosts_list):
         self.cursor.execute('DELETE FROM hosts')
         self.cursor.executemany('INSERT INTO hosts (hostname, ip) VALUES (%s, %s)', [host[:2] for host in hosts_list])
+        self.connection.commit()
+
+    def get_installers(self):
+        self.cursor.execute('SELECT program, path_to_script, arguments FROM scripts')
+        return self.cursor.fetchall()
+
+    def get_scripts(self):
+        self.cursor.execute('SELECT program FROM scripts')
+        return self.cursor.fetchall()
+
+    def insert_scripts(self, scripts_list):
+        self.cursor.execute('DELETE FROM scripts')
+        self.cursor.executemany('INSERT INTO scripts (program, path_to_script, arguments) VALUES (%s, %s, %s)',
+                                scripts_list)
         self.connection.commit()
 
     def create(self):

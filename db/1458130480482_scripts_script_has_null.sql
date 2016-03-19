@@ -1,0 +1,2 @@
+ALTER TABLE scripts
+    ALTER COLUMN script DROP NOT NULL ;

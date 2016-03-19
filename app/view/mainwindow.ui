@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="installerTabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="createScriptTab">
        <attribute name="title">
@@ -175,7 +175,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="startInstalationButton">
+              <widget class="QPushButton" name="startInstalationOnHostsButton">
                <property name="text">
                 <string>Запуск</string>
                </property>
@@ -254,6 +254,13 @@
               <widget class="QPushButton" name="editScriptButton">
                <property name="text">
                 <string>Редагувати</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="updateScriptsListPushButton">
+               <property name="text">
+                <string>Оновити список</string>
                </property>
               </widget>
              </item>
@@ -349,6 +356,13 @@
             </widget>
            </item>
            <item>
+            <widget class="QPushButton" name="updateInstallerListPushButton">
+             <property name="text">
+              <string>Оновити список</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <spacer name="installerButtonHorizontalSpacer">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -427,7 +441,7 @@
   <tabstop>textEdit</tabstop>
   <tabstop>fullUpdateHostListButton</tabstop>
   <tabstop>updateHostListButton</tabstop>
-  <tabstop>startInstalationButton</tabstop>
+  <tabstop>startInstalationOnHostsButton</tabstop>
   <tabstop>hostListTableWidget</tabstop>
   <tabstop>addNewScriptButton</tabstop>
   <tabstop>removeScriptButton</tabstop>
