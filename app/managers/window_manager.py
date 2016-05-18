@@ -89,7 +89,13 @@ class Window(Ui_MainWindow):
             self.scriptListTableWidget.setItem(i, len(row), check_box_item)
 
     def start_installation_on_host(self):
-        pass
+        hosts = self._get_checked_hosts()
+        installers = self.database_manager.get_installers()
+        self.network_manager.run_installers_on_hosts(hosts, installers)
+
+    def _get_checked_hosts(self):
+        return [self.hostListTableWidget.item(i, 1).text() for i in range(self.hostListTableWidget.rowCount()) if
+                self.hostListTableWidget.item(i, 3).checkState() == Qt.Checked]
 
     # ===============
     # installerManagerTab
@@ -141,7 +147,7 @@ class Window(Ui_MainWindow):
                 table_item = QTableWidgetItem(desc)
                 self.hostListTableWidget.setItem(i, j, table_item)
             check_box_item = QTableWidgetItem()
-            check_box_item.setCheckState(Qt.Checked)
+            check_box_item.setCheckState(Qt.Unchecked)
             self.hostListTableWidget.setItem(i, len(host_desc), check_box_item)
 
     @staticmethod
