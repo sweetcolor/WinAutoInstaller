@@ -1,7 +1,7 @@
 import os
 import socket
-import _thread
 import pickle
+from lib.thread_decorator import thread
 
 
 class Server:
@@ -14,14 +14,19 @@ class Server:
         self.socket_obj.listen(5)
         self.connections = dict()
 
+    @thread
     def open_connection(self):
-        _thread.start_new_thread(self._open_connection, ())
+        while True:
+            connection, address = self.socket_obj.accept()
+            self.connections[address[0]] = connection
+            print('Connecting ' + str(address))
 
     def send_data(self, hosts, installers):
         for host in hosts:
             if host in self.connections:
-                _thread.start_new_thread(self._send_installers, (host, installers))
+                self._send_installers(host, installers)
 
+    @thread
     def _send_installers(self, host, installers):
         installers_count = str(len(installers)).encode()
         self.connections[host].send('{:016x}'.format(len(installers_count)).encode())
@@ -36,12 +41,6 @@ class Server:
             installer_size = os.path.getsize(installer_desc[1])
             self.connections[host].send('{:016x}'.format(installer_size).encode())
             self.connections[host].send(installer_file.read())
-
-    def _open_connection(self):
-        while True:
-            connection, address = self.socket_obj.accept()
-            self.connections[address[0]] = connection
-            print('Connecting ' + str(address))
 
     def close_connection(self):
         for connection in self.connections:

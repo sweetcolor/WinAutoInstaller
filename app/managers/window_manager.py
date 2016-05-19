@@ -6,6 +6,7 @@ from PyQt5.QtCore import Qt
 
 from widgets.file_dialog import FileDialog
 
+from lib.thread_decorator import thread
 from app.managers.database_manager import DatabaseManager
 from app.managers.installer_script_manager import InstallerScriptManager
 from app.managers.menu_manager import MenuManager
@@ -67,11 +68,13 @@ class Window(Ui_MainWindow):
 
     # ===============
     # hostManagerTab
+    @thread
     def full_update_host_list(self):
         host_description_list = self.network_manager.get_hosts_list()
         self._update_host_list_table_widget(host_description_list)
         self.database_manager.update_hosts_list(host_description_list)
 
+    @thread
     def update_host_list(self):
         known_hosts_string = ' '.join([i[0] for i in self.database_manager.get_hosts_list()])
         host_description_list = self.network_manager.get_hosts_list(known_hosts_string)
