@@ -1,7 +1,9 @@
+import _thread
 import os
-import socket
 import pickle
-from lib.thread_decorator import thread
+import socket
+
+from app.lib.thread_decorator import thread
 
 
 class Server:
@@ -14,8 +16,10 @@ class Server:
         self.socket_obj.listen(5)
         self.connections = dict()
 
-    @thread
     def open_connection(self):
+        _thread.start_new_thread(self._open_connection, ())
+
+    def _open_connection(self):
         while True:
             connection, address = self.socket_obj.accept()
             self.connections[address[0]] = connection
@@ -41,6 +45,26 @@ class Server:
             installer_size = os.path.getsize(installer_desc[1])
             self.connections[host].send('{:016x}'.format(installer_size).encode())
             self.connections[host].send(installer_file.read())
+        self.get_log_file(host)
+
+    @thread
+    def get_log_file(self, host):
+        bin_buff_size = 1024
+        num_buff_size = 16
+        log_file_size = int(self.connections[host].recv(num_buff_size).decode(), num_buff_size)
+        log_file = open('win_auto_installer.log', 'w')
+        for i in range(log_file_size // bin_buff_size):
+            self.connections[host].revc(bin_buff_size)
+            log_file_part = self.connections[host].recv(bin_buff_size)
+            log_file.write(log_file_part.decode())
+            diff = bin_buff_size - len(log_file_part)
+            while diff:
+                log_file_part = self.connections[host].recv(diff)
+                log_file.write(log_file_part.decode())
+                diff -= len(log_file_part)
+        log_file_part = self.connections[host].recv(log_file_size % bin_buff_size)
+        log_file.write(log_file_part.decode())
+        log_file.close()
 
     def close_connection(self):
         for connection in self.connections:

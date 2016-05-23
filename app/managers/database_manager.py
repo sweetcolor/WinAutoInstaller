@@ -53,8 +53,11 @@ class DatabaseManager:
         self.cursor.executemany('INSERT INTO hosts (hostname, ip) VALUES (%s, %s)', [host[:2] for host in hosts_list])
         self.connection.commit()
 
-    def get_installers(self):
-        self.cursor.execute('SELECT program, path_to_script, arguments FROM scripts')
+    def get_installers(self, where=list()):
+        if where:
+            self.cursor.execute('SELECT program, path_to_script, arguments FROM scripts WHERE program IN %s', (tuple(where),))
+        else:
+            self.cursor.execute('SELECT program, path_to_script, arguments FROM scripts')
         return self.cursor.fetchall()
 
     def get_scripts(self):

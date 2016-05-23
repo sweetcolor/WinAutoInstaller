@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
-from app.managers.window_manager import Window
+
+from app.controllers.window_controller import Window
 
 
 class MainWindow(Window):
@@ -18,9 +19,10 @@ class MainWindow(Window):
 
         # hostManagerTab
         # hostListVerticalLayout
-        self.fullUpdateHostListButton.clicked.connect(self.full_update_host_list)
-        self.updateHostListButton.clicked.connect(self.update_host_list)
+        self.fullUpdateHostListButton.clicked.connect(lambda x: self.window_manager.full_update_host_list())
+        self.updateHostListButton.clicked.connect(lambda x: self.window_manager.update_host_list())
         self.startInstalationOnHostsButton.clicked.connect(self.start_installation_on_host)
+        self.window_manager.updateHostListTableWidget.connect(self.update_host_list_table_widget, Qt.QueuedConnection)
         # scriptsListVerticalLayout
         self.updateScriptsListPushButton.clicked.connect(self.update_scripts_list)
 
