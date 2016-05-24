@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'input_network_range.ui'
+# Form implementation generated from reading ui file 'app\view_ui\input_network_range.ui'
 #
 # Created by: PyQt5 UI code generator 5.5.1
 #

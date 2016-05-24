@@ -12,20 +12,15 @@ class WindowManager(QObject):
         self.database_manager = window_controller.database_manager
         super().__init__()
 
-    # def run(self):
-    #     self.exec()
-
     @thread
     def full_update_host_list(self):
         # range_address = InputNetworkRange(QDialog(self.widget))
         host_description_list = self.network_manager.get_hosts_list()
         self.database_manager.update_hosts_list(host_description_list)
         self.updateHostListTableWidget.emit(host_description_list)
-        # self._update_host_list_table_widget(host_description_list)
 
     @thread
     def update_host_list(self):
         known_hosts_string = ' '.join([i[0] for i in self.database_manager.get_hosts_list()])
         host_description_list = self.network_manager.get_hosts_list(known_hosts_string)
         self.updateHostListTableWidget.emit(host_description_list)
-        # self._update_host_list_table_widget(host_description_list)

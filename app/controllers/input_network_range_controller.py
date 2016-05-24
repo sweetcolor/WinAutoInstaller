@@ -1,4 +1,4 @@
-from app.view.input_network_range import Ui_Dialog
+from app.view_py.input_network_range import Ui_Dialog
 
 
 class InputNetworkRange(Ui_Dialog):
