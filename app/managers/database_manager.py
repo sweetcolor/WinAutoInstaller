@@ -29,7 +29,7 @@ class DatabaseManager:
         migrated_file = set(itertools.chain(*self.migration_cursor.fetchall()))
         curr_dir = os.getcwd()
         os.chdir('db')
-        for migration_file in os.listdir('.'):
+        for migration_file in sorted(os.listdir('.')):
             if migration_file not in migrated_file:
                 self.execute_sql_file(migration_file)
                 self.migration_cursor.execute(

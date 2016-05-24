@@ -1,7 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QTableWidgetItem
 from app.controllers.tab_controller import TabController
-from app.controllers.input_network_range_controller import InputNetworkRange
 from app.view_py.host_manager import Ui_Form
 
 
@@ -10,7 +9,7 @@ class HostManagerTabController(TabController, Ui_Form):
         super().__init__(**kwargs)
         self.setupUi(self.widget)
         self.update_scripts_list()
-        # self.window_manager.update_host_list()
+        self.update_host_list()
         self.connect_slots()
 
     def update_scripts_list(self):
@@ -23,6 +22,16 @@ class HostManagerTabController(TabController, Ui_Form):
             check_box_item = QTableWidgetItem()
             check_box_item.setCheckState(Qt.Checked)
             self.scriptListTableWidget.setItem(i, len(row), check_box_item)
+
+    def update_host_list(self, full_update=False):
+        self.set_disable_host_manager(True)
+        self.window_manager.update_host_list(full_update)
+
+    def set_disable_host_manager(self, bool_):
+        self.fullUpdateHostListButton.setDisabled(bool_)
+        self.updateHostListButton.setDisabled(bool_)
+        self.startInstalationOnHostsButton.setDisabled(bool_)
+        self.hostListTableWidget.setDisabled(bool_)
 
     def start_installation_on_host(self):
         hosts = self._get_checked_hosts()
@@ -46,10 +55,11 @@ class HostManagerTabController(TabController, Ui_Form):
             check_box_item = QTableWidgetItem()
             check_box_item.setCheckState(Qt.Unchecked)
             self.hostListTableWidget.setItem(i, len(host_desc), check_box_item)
+        self.set_disable_host_manager(False)
 
     def connect_slots(self):
-        self.fullUpdateHostListButton.clicked.connect(lambda x: self.window_manager.full_update_host_list())
-        self.updateHostListButton.clicked.connect(lambda x: print('sdfs'))
+        self.fullUpdateHostListButton.clicked.connect(lambda x: self.update_host_list(True))
+        self.updateHostListButton.clicked.connect(lambda x: self.update_host_list(False))
         self.startInstalationOnHostsButton.clicked.connect(self.start_installation_on_host)
         self.window_manager.updateHostListTableWidget.connect(self.update_host_list_table_widget, Qt.QueuedConnection)
         # scriptsListVerticalLayout

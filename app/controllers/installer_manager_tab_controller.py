@@ -9,7 +9,6 @@ class InstallerManagerTabController(TabController, Ui_Form):
         super().__init__(**kwargs)
         self.setupUi(self.widget)
         self.update_installer_list()
-        self.window_manager.update_host_list()
         self.connect_slots()
 
     def update_installer_list(self):
@@ -38,7 +37,7 @@ class InstallerManagerTabController(TabController, Ui_Form):
         for index in self.installerTableWidget.selectedIndexes():
             self.installerTableWidget.removeRow(index.row())
 
-    def save_changes_in_database(self):
+    def save_changes_to_database(self):
         items = [list(itertools.repeat(i, 3)) for i in range(self.installerTableWidget.rowCount())]
         for i in range(self.installerTableWidget.rowCount()):
             for j in range(self.installerTableWidget.columnCount()):
@@ -48,6 +47,6 @@ class InstallerManagerTabController(TabController, Ui_Form):
     def connect_slots(self):
         self.addInstallerPushButton.clicked.connect(self.add_installer)
         self.deleteInstallerPushButton.clicked.connect(self.delete_installer)
-        self.saveChangesPushButton.clicked.connect(self.save_changes_in_database)
+        self.saveChangesPushButton.clicked.connect(self.save_changes_to_database)
         self.updateInstallerListPushButton.clicked.connect(self.update_installer_list)
 
