@@ -1,5 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QDialog
+from app.controllers.input_network_range_controller import InputNetworkRangeController
 from app.controllers.tab_controller import TabController
 from app.view_py.host_manager import Ui_Form
 
@@ -25,7 +27,11 @@ class HostManagerTabController(TabController, Ui_Form):
 
     def update_host_list(self, full_update=False):
         self.set_disable_host_manager(True)
-        self.window_manager.update_host_list(full_update)
+        range_address = InputNetworkRangeController(QDialog()).get_network_range() if full_update else None
+        if not full_update or range_address:
+            self.window_manager.update_host_list(full_update, range_address)
+        else:
+            self.set_disable_host_manager(False)
 
     def set_disable_host_manager(self, bool_):
         self.fullUpdateHostListButton.setDisabled(bool_)
@@ -64,4 +70,3 @@ class HostManagerTabController(TabController, Ui_Form):
         self.window_manager.updateHostListTableWidget.connect(self.update_host_list_table_widget, Qt.QueuedConnection)
         # scriptsListVerticalLayout
         self.updateScriptsListPushButton.clicked.connect(self.update_scripts_list)
-
