@@ -1,3 +1,4 @@
+from PyQt5.QtWidgets import QMainWindow
 from app.managers.managers import Managers
 from app.controllers.create_script_tab_controller import CreateScriptTabController
 from app.controllers.host_manager_tab_controller import HostManagerTabController
@@ -5,10 +6,10 @@ from app.controllers.installer_manager_tab_controller import InstallerManagerTab
 from app.view_py.mainwindow import Ui_MainWindow
 
 
-class WindowController(Ui_MainWindow):
-    def __init__(self, window):
+class WindowController(QMainWindow, Ui_MainWindow):
+    def __init__(self):
         super().__init__()
-        self.setupUi(window)
+        self.setupUi(self)
         kwargs = {
             'widget': self.createScriptTab,
             'managers': Managers()

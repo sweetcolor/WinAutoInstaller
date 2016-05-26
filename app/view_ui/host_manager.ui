@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1032</width>
+    <height>572</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1031</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="hostManagerTabGridLayout">
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="scriptsListVerticalLayout">
+      <item>
+       <widget class="QLabel" name="ScriptListLabel">
+        <property name="text">
+         <string>Список сценаріїв</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="scriptsListButtonsHorizontalLayout">
+        <item>
+         <widget class="QPushButton" name="addNewScriptButton">
+          <property name="text">
+           <string>Додати</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="removeScriptButton">
+          <property name="text">
+           <string>Видалити</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="editScriptButton">
+          <property name="text">
+           <string>Редагувати</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="updateScriptsListPushButton">
+          <property name="text">
+           <string>Оновити список</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="scriptsListButtonsHorizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="scriptListTableWidget">
+        <column>
+         <property name="text">
+          <string>Назва сценарія</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Для запуска</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="hostListVerticalLayout">
+      <item>
+       <widget class="QLabel" name="localMachineListLabel">
+        <property name="text">
+         <string>Список локальних машин</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hostListButtonsHorizontalLayout">
+        <item>
+         <widget class="QPushButton" name="fullUpdateHostListButton">
+          <property name="text">
+           <string>Повне оновлення</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="updateHostListButton">
+          <property name="text">
+           <string>Оновлення</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="startInstalationOnHostsButton">
+          <property name="text">
+           <string>Запуск</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="hostListButtonsHorizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="hostListTableWidget">
+        <column>
+         <property name="text">
+          <string>Назва хоста</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>IP</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Статус</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Для запуска</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

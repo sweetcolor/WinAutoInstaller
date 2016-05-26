@@ -1,12 +1,11 @@
 import sys
-from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QApplication
 from app.controllers.window_controller import WindowController
 
 
 def run(argv):
-    app = QtWidgets.QApplication(argv)
+    app = QApplication(argv)
     app.setStyle('fusion')
-    window = QtWidgets.QMainWindow()
-    window_controller = WindowController(window)
+    window = WindowController()
     window.show()
     sys.exit(app.exec_())

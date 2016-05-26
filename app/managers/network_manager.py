@@ -16,7 +16,7 @@ class NetworkManager(nmap.PortScanner):
         ip = enable_hosts['scan'].keys()
         host_names = [enable_hosts['scan'][i]['hostnames'] for i in ip]
         name = [hostname[0]['name'] if len(hostname) else '' for hostname in host_names]
-        status = [enable_hosts['scan'][i]['status']['state'] for i in ip]
+        status = ['up' if i in self.server.connections else 'down' for i in ip]
         return list(zip(name, ip, status))
 
     def run_installers_on_hosts(self, hosts, installers):

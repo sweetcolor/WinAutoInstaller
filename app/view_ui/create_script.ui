@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1042</width>
+    <height>570</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1041</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="createScriptGridLayout">
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="ScriptsVerticalLayout">
+      <item>
+       <widget class="QLabel" name="scriptLabel">
+        <property name="text">
+         <string>Скріпт</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="textEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="componentVerticalLayout">
+      <item>
+       <widget class="QLabel" name="installerComponentLabel">
+        <property name="text">
+         <string>Компоненти інсталятора</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="componentButtonsHorizontalLayout">
+        <item>
+         <widget class="QPushButton" name="openInstallerButton">
+          <property name="text">
+           <string>Open</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="refreshListButton">
+          <property name="text">
+           <string>Оновити список</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="componentButtonsHorizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTreeWidget" name="installerComponentTreeWidget">
+        <column>
+         <property name="text">
+          <string notr="true">Компоненти інсталятора</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="proprtyComponentLabel">
+        <property name="text">
+         <string>Властивості компонента</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="proprtyComponentTableWidget">
+        <column>
+         <property name="text">
+          <string>Назва</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Значення</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,8 +1,9 @@
 from PyQt5.QtCore import Qt
-from widgets.installerTreeWidgetItem import InstallerTreeWidgetItem
-from app.managers.menu_manager import MenuManager
+
 from app.controllers.tab_controller import TabController
+from app.managers.menu_manager import MenuManager
 from app.view_py.create_script import Ui_Form
+from app.widgets.installerTreeWidgetItem import InstallerTreeWidgetItem
 
 
 class CreateScriptTabController(TabController, Ui_Form):
@@ -15,7 +16,8 @@ class CreateScriptTabController(TabController, Ui_Form):
         self.connect_slots()
 
     def run_installer(self):
-        installer_path = self.get_installer_path()[0]
+        installer_path = self.get_installer_path()
+        installer_path = installer_path[0] if installer_path else None
         if installer_path:
             self.installer_manager.start_installer(installer_path)
             self.refresh_program_list()

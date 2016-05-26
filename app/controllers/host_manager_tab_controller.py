@@ -59,7 +59,8 @@ class HostManagerTabController(TabController, Ui_Form):
                 table_item = QTableWidgetItem(desc)
                 self.hostListTableWidget.setItem(i, j, table_item)
             check_box_item = QTableWidgetItem()
-            check_box_item.setCheckState(Qt.Unchecked)
+            row_check_state = Qt.Checked if host_desc[-1] == 'up' else Qt.Unchecked
+            check_box_item.setCheckState(row_check_state)
             self.hostListTableWidget.setItem(i, len(host_desc), check_box_item)
         self.set_disable_host_manager(False)
 

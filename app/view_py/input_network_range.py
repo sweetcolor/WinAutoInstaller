@@ -133,6 +133,9 @@ class Ui_Dialog(object):
         self.ip1_2_dotLabel.setText(_translate("Dialog", "."))
         self.ip2_octetLineEdit.setText(_translate("Dialog", "168"))
         self.ip2_3_dotLabel.setText(_translate("Dialog", "."))
+        self.ip3_octetLineEdit.setText(_translate("Dialog", "0"))
         self.ip3_4_dotLabel.setText(_translate("Dialog", "."))
+        self.ip4_octetBeginLineEdit.setText(_translate("Dialog", "1"))
         self.ip4_rangeLabel.setText(_translate("Dialog", "-"))
+        self.ip4_octetEndLineEdit.setText(_translate("Dialog", "255"))
 

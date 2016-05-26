@@ -1,7 +1,9 @@
 import itertools
+from PyQt5.QtWidgets import QDialog
 from PyQt5.QtWidgets import QTableWidgetItem
 from app.controllers.tab_controller import TabController
 from app.view_py.installer_manager import Ui_Form
+from app.controllers.create_installer_dialog_controller import CreateInstallerDialogController
 
 
 class InstallerManagerTabController(TabController, Ui_Form):
@@ -19,19 +21,31 @@ class InstallerManagerTabController(TabController, Ui_Form):
                 item = QTableWidgetItem(column_text)
                 self.installerTableWidget.setItem(i, j, item)
 
+    def edit_installer(self):
+        for item in self.installerTableWidget.selectedItems():
+            row = item.row()
+            name = self.installerTableWidget.item(row, 0).text()
+            path = self.installerTableWidget.item(row, 1).text()
+            argv = self.installerTableWidget.item(row, 2).text()
+            name, installer_path, argv = CreateInstallerDialogController(QDialog(), name, path, argv).get_results()
+            if name and installer_path and argv:
+                self._set_row_in_installer_table_widget(name, installer_path, argv, row)
+
     def add_installer(self):
-        installers_path = self.get_installer_path()[:-1]
-        if installers_path:
+        name, installer_path, argv = CreateInstallerDialogController(QDialog()).get_results()
+        if name and installer_path and argv:
             row_count = self.installerTableWidget.rowCount()
-            for idx, installer_path in enumerate(installers_path):
-                self.installerTableWidget.setRowCount(row_count + 1)
-                name = installer_path.split('/')[-1][:-4]
-                table_item = QTableWidgetItem(name)
-                self.installerTableWidget.setItem(row_count + idx, 0, table_item)
-                table_item = QTableWidgetItem(installer_path)
-                self.installerTableWidget.setItem(row_count + idx, 1, table_item)
-                table_item = QTableWidgetItem('/S')
-                self.installerTableWidget.setItem(row_count + idx, 2, table_item)
+            self._set_row_in_installer_table_widget(name, installer_path, argv, row_count)
+
+    def _set_row_in_installer_table_widget(self, name, path, argv, row):
+        if self.installerTableWidget.rowCount() <= row:
+            self.installerTableWidget.setRowCount(row + 1)
+        table_item = QTableWidgetItem(name)
+        self.installerTableWidget.setItem(row, 0, table_item)
+        table_item = QTableWidgetItem(path)
+        self.installerTableWidget.setItem(row, 1, table_item)
+        table_item = QTableWidgetItem(argv)
+        self.installerTableWidget.setItem(row, 2, table_item)
 
     def delete_installer(self):
         for index in self.installerTableWidget.selectedIndexes():
@@ -46,6 +60,7 @@ class InstallerManagerTabController(TabController, Ui_Form):
 
     def connect_slots(self):
         self.addInstallerPushButton.clicked.connect(self.add_installer)
+        self.editInstallerPushButton.clicked.connect(self.edit_installer)
         self.deleteInstallerPushButton.clicked.connect(self.delete_installer)
         self.saveChangesPushButton.clicked.connect(self.save_changes_to_database)
         self.updateInstallerListPushButton.clicked.connect(self.update_installer_list)

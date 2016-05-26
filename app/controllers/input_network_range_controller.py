@@ -1,12 +1,11 @@
 from app.view_py.input_network_range import Ui_Dialog
+from app.controllers.dialog_controller import DialogController
 
 
-class InputNetworkRangeController(Ui_Dialog):
+class InputNetworkRangeController(DialogController, Ui_Dialog):
     def __init__(self, dialog):
-        self.dialog = dialog
-        super(InputNetworkRangeController, self).__init__()
-        self.setupUi(self.dialog)
-        self.dialog.exec_()
+        self.setupUi(dialog)
+        super().__init__(dialog)
 
     def get_network_range(self):
         net_range = ''
