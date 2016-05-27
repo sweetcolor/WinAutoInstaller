@@ -1,13 +1,15 @@
 <RCC>
   <qresource prefix="images/">
-    <file alias="copy.png">../assets/images/copy.png</file>
-    <file alias="cut.png">../assets/images/cut.png</file>
-    <file alias="new.png">../assets/images/new.png</file>
     <file alias="open.png">../assets/images/open.png</file>
-    <file alias="paste.png">../assets/images/paste.png</file>
-    <file alias="save.png">../assets/images/save.png</file>
-  </qresource>
-  <qresource prefix="view/">
-    <file>installer_manager.ui</file>
+    <file alias="update.png">../assets/images/update.png</file>
+    <file alias="arrow_down.png">../assets/images/arrow_down.png</file>
+    <file alias="arrow_up.png">../assets/images/arrow_up.png</file>
+    <file alias="minus.png">../assets/images/minus.png</file>
+    <file alias="database.png">../assets/images/database.png</file>
+    <file alias="play.png">../assets/images/play.png</file>
+    <file alias="pencil.png">../assets/images/pencil.png</file>
+    <file alias="plus.png">../assets/images/plus.png</file>
+    <file alias="full-update.png">../assets/images/full-update.png</file>
+    <file alias="folder-open.png">../assets/images/folder-open.png</file>
   </qresource>
 </RCC>

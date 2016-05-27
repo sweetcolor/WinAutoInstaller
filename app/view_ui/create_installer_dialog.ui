@@ -28,8 +28,18 @@
      </item>
      <item>
       <widget class="QToolButton" name="pathToolButton">
+       <property name="toolTip">
+        <string>Відкрити інсталятор</string>
+       </property>
        <property name="text">
         <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="view.qrc">
+         <normaloff>:/images/folder-open.png</normaloff>:/images/folder-open.png</iconset>
+       </property>
+       <property name="autoRaise">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -71,7 +81,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="view.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

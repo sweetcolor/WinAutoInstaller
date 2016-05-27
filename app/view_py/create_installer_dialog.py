@@ -23,6 +23,10 @@ class Ui_Dialog(object):
         self.pathLineEdit.setObjectName("pathLineEdit")
         self.horizontalLayout.addWidget(self.pathLineEdit)
         self.pathToolButton = QtWidgets.QToolButton(Dialog)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/images/folder-open.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pathToolButton.setIcon(icon)
+        self.pathToolButton.setAutoRaise(False)
         self.pathToolButton.setObjectName("pathToolButton")
         self.horizontalLayout.addWidget(self.pathToolButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -54,7 +58,9 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.pathLabel.setText(_translate("Dialog", "Шлях"))
+        self.pathToolButton.setToolTip(_translate("Dialog", "Відкрити інсталятор"))
         self.pathToolButton.setText(_translate("Dialog", "..."))
         self.nameLabel.setText(_translate("Dialog", "Назва"))
         self.argLabel.setText(_translate("Dialog", "Аргументи"))
 
+import app.view_py.view_rc

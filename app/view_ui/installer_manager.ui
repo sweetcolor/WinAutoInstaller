@@ -13,100 +13,294 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1031</width>
-     <height>561</height>
-    </rect>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
    </property>
-   <layout class="QVBoxLayout" name="installerManagerVerticalLayout">
-    <item>
-     <widget class="QLabel" name="installerLabel">
-      <property name="text">
-       <string>Інсталятори</string>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1033</width>
+        <height>563</height>
+       </rect>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="installerButtonHorizontalLayout">
+         <item>
+          <widget class="QLabel" name="installerLabel">
+           <property name="text">
+            <string>Інсталятори</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="addInstallerPushButton">
+           <property name="toolTip">
+            <string>Додати</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="view.qrc">
+             <normaloff>:/images/plus.png</normaloff>:/images/plus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>27</width>
+             <height>27</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="deleteInstallerPushButton">
+           <property name="toolTip">
+            <string>Видалити</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="view.qrc">
+             <normaloff>:/images/minus.png</normaloff>:/images/minus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>27</width>
+             <height>27</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="editInstallerPushButton">
+           <property name="toolTip">
+            <string>Редагувати</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="view.qrc">
+             <normaloff>:/images/pencil.png</normaloff>:/images/pencil.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>27</width>
+             <height>27</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="saveChangesPushButton">
+           <property name="toolTip">
+            <string>Збереження списку в базі</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="view.qrc">
+             <normaloff>:/images/database.png</normaloff>:/images/database.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>27</width>
+             <height>27</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="updateInstallerListPushButton">
+           <property name="toolTip">
+            <string>Оновлення</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="view.qrc">
+             <normaloff>:/images/full-update.png</normaloff>:/images/full-update.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>27</width>
+             <height>27</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="downInstallerItemButton">
+           <property name="toolTip">
+            <string>Осутити вниз</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="view.qrc">
+             <normaloff>:/images/arrow_down.png</normaloff>:/images/arrow_down.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>27</width>
+             <height>27</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="upInstallerItemButton">
+           <property name="toolTip">
+            <string>Підняти вгори</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="view.qrc">
+             <normaloff>:/images/arrow_up.png</normaloff>:/images/arrow_up.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>27</width>
+             <height>27</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QTableWidget" name="installerTableWidget">
+         <column>
+          <property name="text">
+           <string>Назва</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Шлях</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Аргументи</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
      </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="installerButtonHorizontalLayout">
-      <item>
-       <widget class="QPushButton" name="addInstallerPushButton">
-        <property name="text">
-         <string>Додати</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="deleteInstallerPushButton">
-        <property name="text">
-         <string>Видалити</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="editInstallerPushButton">
-        <property name="text">
-         <string>Редагувати</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="saveChangesPushButton">
-        <property name="text">
-         <string>Зберегти зміни</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="updateInstallerListPushButton">
-        <property name="text">
-         <string>Оновити список</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QTableWidget" name="installerTableWidget">
-      <column>
-       <property name="text">
-        <string>Назва</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Шлях</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Аргументи</string>
-       </property>
-      </column>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="view.qrc"/>
+ </resources>
  <connections/>
 </ui>

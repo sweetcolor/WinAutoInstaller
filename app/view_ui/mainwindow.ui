@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1059</width>
-    <height>658</height>
+    <height>652</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,7 +57,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <tabstops>
   <tabstop>installerTabWidget</tabstop>

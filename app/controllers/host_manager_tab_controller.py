@@ -1,6 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTableWidgetItem
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QTableWidgetItem, QDialog, QToolButton
 from app.controllers.input_network_range_controller import InputNetworkRangeController
 from app.controllers.tab_controller import TabController
 from app.view_py.host_manager import Ui_Form
@@ -34,9 +33,10 @@ class HostManagerTabController(TabController, Ui_Form):
             self.set_disable_host_manager(False)
 
     def set_disable_host_manager(self, bool_):
-        self.fullUpdateHostListButton.setDisabled(bool_)
-        self.updateHostListButton.setDisabled(bool_)
-        self.startInstalationOnHostsButton.setDisabled(bool_)
+        for idx in range(self.hostListButtonsHorizontalLayout.count()):
+            widget = self.hostListButtonsHorizontalLayout.itemAt(idx).widget()
+            if widget:
+                widget.setDisabled(bool_)
         self.hostListTableWidget.setDisabled(bool_)
 
     def start_installation_on_host(self):

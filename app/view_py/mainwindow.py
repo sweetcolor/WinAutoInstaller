@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1059, 658)
+        MainWindow.resize(1059, 652)
         self.centralWidget = QtWidgets.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralWidget)
@@ -36,9 +36,6 @@ class Ui_MainWindow(object):
         self.mainToolBar = QtWidgets.QToolBar(MainWindow)
         self.mainToolBar.setObjectName("mainToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
-        self.statusBar = QtWidgets.QStatusBar(MainWindow)
-        self.statusBar.setObjectName("statusBar")
-        MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
         self.installerTabWidget.setCurrentIndex(1)

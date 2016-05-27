@@ -6,175 +6,532 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1032</width>
-    <height>572</height>
+    <width>1065</width>
+    <height>606</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1031</width>
-     <height>571</height>
-    </rect>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
    </property>
-   <layout class="QGridLayout" name="hostManagerTabGridLayout">
-    <item row="0" column="1">
-     <layout class="QVBoxLayout" name="scriptsListVerticalLayout">
-      <item>
-       <widget class="QLabel" name="ScriptListLabel">
-        <property name="text">
-         <string>Список сценаріїв</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="scriptsListButtonsHorizontalLayout">
-        <item>
-         <widget class="QPushButton" name="addNewScriptButton">
-          <property name="text">
-           <string>Додати</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="removeScriptButton">
-          <property name="text">
-           <string>Видалити</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="editScriptButton">
-          <property name="text">
-           <string>Редагувати</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="updateScriptsListPushButton">
-          <property name="text">
-           <string>Оновити список</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="scriptsListButtonsHorizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QTableWidget" name="scriptListTableWidget">
-        <column>
-         <property name="text">
-          <string>Назва сценарія</string>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1063</width>
+        <height>604</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <layout class="QVBoxLayout" name="hostListVerticalLayout">
+           <item>
+            <layout class="QHBoxLayout" name="hostListButtonsHorizontalLayout">
+             <item>
+              <widget class="QLabel" name="localMachineListLabel">
+               <property name="text">
+                <string>Список локальних машин</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="saveToDatabaselButton">
+               <property name="toolTip">
+                <string>Збереження списку в базі</string>
+               </property>
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="view.qrc">
+                 <normaloff>:/images/database.png</normaloff>:/images/database.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoRepeat">
+                <bool>false</bool>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="fullUpdateHostListButton">
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="view.qrc">
+                 <normaloff>:/images/full-update.png</normaloff>:/images/full-update.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoRepeat">
+                <bool>false</bool>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="updateHostListButton">
+               <property name="toolTip">
+                <string>Оновлення</string>
+               </property>
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="view.qrc">
+                 <normaloff>:/images/update.png</normaloff>:/images/update.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoRepeat">
+                <bool>false</bool>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="startInstalationOnHostsButton">
+               <property name="toolTip">
+                <string>Запуск</string>
+               </property>
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="view.qrc">
+                 <normaloff>:/images/play.png</normaloff>:/images/play.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoRepeat">
+                <bool>false</bool>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="downHostItemButton">
+               <property name="toolTip">
+                <string>Осутити вниз</string>
+               </property>
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="view.qrc">
+                 <normaloff>:/images/arrow_down.png</normaloff>:/images/arrow_down.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoRepeat">
+                <bool>false</bool>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="upHostItemButton">
+               <property name="toolTip">
+                <string>Підняти вгори</string>
+               </property>
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="view.qrc">
+                 <normaloff>:/images/arrow_up.png</normaloff>:/images/arrow_up.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoRepeat">
+                <bool>false</bool>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="hostListButtonsHorizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="hostListTableWidget">
+             <property name="sizeAdjustPolicy">
+              <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+             </property>
+             <column>
+              <property name="text">
+               <string>Назва хоста</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>IP</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Статус</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Для запуска</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="resultLabel">
+             <property name="text">
+              <string>Результати роботи</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="resutTextEdit">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <layout class="QVBoxLayout" name="scriptsListVerticalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="scriptsListButtonsHorizontalLayout">
+           <item>
+            <widget class="QLabel" name="ScriptListLabel">
+             <property name="text">
+              <string>Список сценаріїв</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="addNewScriptButton">
+             <property name="toolTip">
+              <string>Додати</string>
+             </property>
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="view.qrc">
+               <normaloff>:/images/plus.png</normaloff>:/images/plus.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>false</bool>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="removeScriptButton">
+             <property name="toolTip">
+              <string>Видалити</string>
+             </property>
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="view.qrc">
+               <normaloff>:/images/minus.png</normaloff>:/images/minus.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>false</bool>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="editScriptButton">
+             <property name="toolTip">
+              <string>Редагувати</string>
+             </property>
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="view.qrc">
+               <normaloff>:/images/pencil.png</normaloff>:/images/pencil.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>false</bool>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="updateScriptsListPushButton">
+             <property name="toolTip">
+              <string>Оновлення</string>
+             </property>
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="view.qrc">
+               <normaloff>:/images/full-update.png</normaloff>:/images/full-update.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>false</bool>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="scriptsListButtonsHorizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="scriptListTableWidget">
+           <column>
+            <property name="text">
+             <string>Назва сценарія</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Для запуска</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="prepareScriptLabel">
+           <property name="text">
+            <string>Підготовка сценаріїв</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTabWidget" name="prepareScriptTabWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="currentScriptTab">
+            <attribute name="title">
+             <string>Поточний сценарій</string>
+            </attribute>
+            <widget class="QWidget" name="verticalLayoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>-1</x>
+               <y>-1</y>
+               <width>511</width>
+               <height>221</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="currentScriptVerticalLayout">
+              <item>
+               <widget class="QTextEdit" name="currentScriptTextEdit"/>
+              </item>
+             </layout>
+            </widget>
+            <zorder>verticalLayoutWidget</zorder>
+            <zorder></zorder>
+           </widget>
+           <widget class="QWidget" name="allScriptsTab">
+            <attribute name="title">
+             <string>Всі сценарії</string>
+            </attribute>
+            <widget class="QWidget" name="verticalLayoutWidget_2">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>511</width>
+               <height>221</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="allScriptsVerticalLayout">
+              <item>
+               <widget class="QTextEdit" name="allScriptsTextEdit"/>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QProgressBar" name="resultProgressBar">
+         <property name="enabled">
+          <bool>false</bool>
          </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Для запуска</string>
+         <property name="value">
+          <number>0</number>
          </property>
-        </column>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="hostListVerticalLayout">
-      <item>
-       <widget class="QLabel" name="localMachineListLabel">
-        <property name="text">
-         <string>Список локальних машин</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="hostListButtonsHorizontalLayout">
-        <item>
-         <widget class="QPushButton" name="fullUpdateHostListButton">
-          <property name="text">
-           <string>Повне оновлення</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="updateHostListButton">
-          <property name="text">
-           <string>Оновлення</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="startInstalationOnHostsButton">
-          <property name="text">
-           <string>Запуск</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="hostListButtonsHorizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QTableWidget" name="hostListTableWidget">
-        <column>
-         <property name="text">
-          <string>Назва хоста</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>IP</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Статус</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Для запуска</string>
-         </property>
-        </column>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="view.qrc"/>
+ </resources>
  <connections/>
 </ui>
