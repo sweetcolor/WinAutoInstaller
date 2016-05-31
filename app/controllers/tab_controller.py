@@ -1,4 +1,3 @@
-import os
 from app.widgets.file_dialog import FileDialog
 
 

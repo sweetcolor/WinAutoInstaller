@@ -1,13 +1,15 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTableWidgetItem, QDialog, QToolButton
+from PyQt5.QtWidgets import QTableWidgetItem, QDialog
 from app.controllers.input_network_range_controller import InputNetworkRangeController
 from app.controllers.tab_controller import TabController
 from app.view_py.host_manager import Ui_Form
+from app.controllers.result_installation_controller import ResultInstallationController
 
 
 class HostManagerTabController(TabController, Ui_Form):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.result_tab_name_dict = dict()
         self.setupUi(self.widget)
         self.update_scripts_list()
         self.update_host_list()
@@ -41,8 +43,35 @@ class HostManagerTabController(TabController, Ui_Form):
 
     def start_installation_on_host(self):
         hosts = self._get_checked_hosts()
-        installers = self.database_manager.get_installers(self._get_checked_installers())
+        installers = self._prepare_installers()
+        self.create_results_tab(hosts)
         self.network_manager.run_installers_on_hosts(hosts, installers)
+
+    def _prepare_installers(self):
+        installers = self.database_manager.get_installers(self._get_checked_installers())
+        installers = [(x[0].replace(' ', '_') + x[1][-4:], x[1], x[2]) for x in installers]
+        installers_script = {x[0]: 'start /wait ' + x[0] + ' ' + x[2] for x in installers}
+        installers_path = {x[0]: x[1] for x in installers}
+        installers_name = list(installers_path.keys())
+        return {
+            'names': installers_name,
+            'paths': installers_path,
+            'scripts': installers_script
+        }
+
+    def create_results_tab(self, hosts):
+        self.resultLabel.setDisabled(False)
+        self.resultTabWidget.setDisabled(False)
+        self.resultTabWidget.clear()
+        for idx, host in enumerate(hosts):
+            self.result_tab_name_dict[host] = idx
+            self.resultTabWidget.addTab(ResultInstallationController(), host)
+
+    def append_to_log_file(self, host, text):
+        self.resultTabWidget.widget(self.result_tab_name_dict[host]).resutTextEdit.append(text)
+
+    def update_progress_bar(self, host, percent):
+        self.resultTabWidget.widget(self.result_tab_name_dict[host]).resultProgressBar.setValue(percent)
 
     def _get_checked_hosts(self):
         return [self.hostListTableWidget.item(i, 1).text() for i in range(self.hostListTableWidget.rowCount()) if
@@ -71,3 +100,6 @@ class HostManagerTabController(TabController, Ui_Form):
         self.window_manager.updateHostListTableWidget.connect(self.update_host_list_table_widget, Qt.QueuedConnection)
         # scriptsListVerticalLayout
         self.updateScriptsListPushButton.clicked.connect(self.update_scripts_list)
+
+        self.network_manager.appendToLogFile.connect(self.append_to_log_file, Qt.QueuedConnection)
+        self.network_manager.updateProgressBar.connect(self.update_progress_bar, Qt.QueuedConnection)

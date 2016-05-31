@@ -275,6 +275,9 @@
            </item>
            <item>
             <widget class="QLabel" name="resultLabel">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Результати роботи</string>
              </property>
@@ -284,9 +287,12 @@
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="resutTextEdit">
+            <widget class="QTabWidget" name="resultTabWidget">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="currentIndex">
+              <number>-1</number>
              </property>
             </widget>
            </item>
@@ -472,57 +478,63 @@
             <attribute name="title">
              <string>Поточний сценарій</string>
             </attribute>
-            <widget class="QWidget" name="verticalLayoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>-1</x>
-               <y>-1</y>
-               <width>511</width>
-               <height>221</height>
-              </rect>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>0</number>
              </property>
-             <layout class="QVBoxLayout" name="currentScriptVerticalLayout">
-              <item>
-               <widget class="QTextEdit" name="currentScriptTextEdit"/>
-              </item>
-             </layout>
-            </widget>
-            <zorder>verticalLayoutWidget</zorder>
-            <zorder></zorder>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="currentScriptVerticalLayout">
+               <item>
+                <widget class="QTextEdit" name="currentScriptTextEdit"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
            <widget class="QWidget" name="allScriptsTab">
             <attribute name="title">
              <string>Всі сценарії</string>
             </attribute>
-            <widget class="QWidget" name="verticalLayoutWidget_2">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>511</width>
-               <height>221</height>
-              </rect>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="spacing">
+              <number>0</number>
              </property>
-             <layout class="QVBoxLayout" name="allScriptsVerticalLayout">
-              <item>
-               <widget class="QTextEdit" name="allScriptsTextEdit"/>
-              </item>
-             </layout>
-            </widget>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="allScriptsVerticalLayout">
+               <item>
+                <widget class="QTextEdit" name="allScriptsTextEdit"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>
         </layout>
-       </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QProgressBar" name="resultProgressBar">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="value">
-          <number>0</number>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>

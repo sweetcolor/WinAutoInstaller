@@ -1,13 +1,16 @@
 import nmap
-import socket
-import os
-from app.server import Server
+from PyQt5.QtCore import QObject, pyqtSignal
+from app.services.server import Server
 
 
-class NetworkManager(nmap.PortScanner):
+class NetworkManager(QObject, nmap.PortScanner):
+    appendToLogFile = pyqtSignal(str, str, name='appendToLogFile')
+    updateProgressBar = pyqtSignal(str, int, name='updateProgressBar')
+
     def __init__(self):
-        super().__init__()
-        self.server = Server()
+        QObject.__init__(self)
+        nmap.PortScanner.__init__(self)
+        self.server = Server(self)
         self.server.open_connection()
 
     def get_hosts_list(self, known_list_ip=None):
@@ -21,15 +24,3 @@ class NetworkManager(nmap.PortScanner):
 
     def run_installers_on_hosts(self, hosts, installers):
         self.server.send_data(hosts, installers)
-
-    def run_server(self):
-        host = ''
-        port = 2000
-
-        socket_obj = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socket_obj.bind((host, port))
-        socket_obj.listen(5)
-
-        while True:
-            connection, address = socket_obj.accept()
-            print('Connecting ' + str(address))

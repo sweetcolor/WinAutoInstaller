@@ -11,7 +11,7 @@ class CreateInstallerDialogController(DialogController, Ui_Dialog):
         self.file_dialog = FileDialog(widget=dialog)
         default_argv = [
             '',
-            'start /wait <назва інсталятора> /s /sms',
+            '/s /sms',
             '"/qb-! REBOOT=ReallySuppress"',
             '/SILENT',
             '/S',

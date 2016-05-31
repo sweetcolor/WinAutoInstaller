@@ -55,7 +55,8 @@ class DatabaseManager:
 
     def get_installers(self, where=list()):
         if where:
-            self.cursor.execute('SELECT program, path_to_script, arguments FROM scripts WHERE program IN %s', (tuple(where),))
+            self.cursor.execute('SELECT program, path_to_script, arguments FROM scripts WHERE program IN %s',
+                                (tuple(where),))
         else:
             self.cursor.execute('SELECT program, path_to_script, arguments FROM scripts')
         return self.cursor.fetchall()

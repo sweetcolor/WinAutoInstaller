@@ -1,6 +1,5 @@
-from PyQt5.QtCore import QObject
-from PyQt5.QtCore import pyqtSignal
-from app.lib.thread_decorator import thread
+from PyQt5.QtCore import QObject, pyqtSignal
+from app.services.thread_decorator import thread
 import time
 
 
