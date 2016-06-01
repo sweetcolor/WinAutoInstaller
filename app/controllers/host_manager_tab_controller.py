@@ -50,7 +50,7 @@ class HostManagerTabController(TabController, Ui_Form):
     def _prepare_installers(self):
         installers = self.database_manager.get_installers(self._get_checked_installers())
         installers = [(x[0].replace(' ', '_') + x[1][-4:], x[1], x[2]) for x in installers]
-        installers_script = {x[0]: 'start /wait ' + x[0] + ' ' + x[2] for x in installers}
+        installers_script = {x[0]: [x[0]] + x[2].split() for x in installers}
         installers_path = {x[0]: x[1] for x in installers}
         installers_name = list(installers_path.keys())
         return {

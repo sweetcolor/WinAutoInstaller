@@ -65,7 +65,11 @@ class Server:
         installed_program_count = 0
         while True:
             size = int(self.connections[host].recv(self.num_buff_size).decode(), self.num_buff_size)
-            message = self.connections[host].recv(size).decode().strip()
+            bin_message = self.connections[host].recv(size)
+            while len(bin_message) < size:
+                size -= len(bin_message)
+                bin_message += self.connections[host].recv(size)
+            message = bin_message.decode().strip()
             try:
                 self.size_get_data += int(message)
                 self.network_manager.updateProgressBar.emit(host,
